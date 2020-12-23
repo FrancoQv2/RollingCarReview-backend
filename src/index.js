@@ -7,7 +7,6 @@ dotenv.config();
 const mongoose = require('./database');
 const reviewRouter = require('./routes/review.routes');
 const categoryRouter = require('./routes/category.routes');
-// const commentRouter = require('./routes/comment.routes');
 
 const app = express();
 
@@ -30,4 +29,3 @@ app.use(express.static(path.join(__dirname, "../public")));
 // Rutas
 app.use('/api/reviews', reviewRouter);
 app.use('/api/categories', categoryRouter);
-// app.use('/api/comments', commentRouter);

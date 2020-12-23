@@ -72,7 +72,7 @@ reviewCtrl.getReviews = async (req,res) => {
 
 reviewCtrl.getReview = async (req,res) => {
     const id = req.params.id;
-    await Review.find({_id: id},{__v:0},function(err,review){
+    await Review.findById(id,{__v:0},function(err,review){
         if(!err){
             if(!review || review.isDeleted == true) {
                 res.status(400).json({
@@ -127,8 +127,8 @@ reviewCtrl.deleteReview = (req,res) => {
                     msg: "Cannot update review with id: " + id + " maybe not found"
                 });
             } else {
-                data.comments.forEach(element => {
-                    element.isDeleted = true;
+                data.comments.forEach(comment => {
+                    comment.isDeleted = true;
                 });
                 res.status(200).send({
                     msg: "Review borrado exitosamente"
