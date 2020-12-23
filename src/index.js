@@ -5,9 +5,9 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('./database');
-// const userRouter = require('./routes/users.routes');
-// const cardRouter = require('./routes/cards.routes');
-// const initialSetup = require('./libs/initialSetup');
+const reviewRouter = require('./routes/review.routes');
+const categoryRouter = require('./routes/category.routes');
+// const commentRouter = require('./routes/comment.routes');
 
 const app = express();
 
@@ -28,5 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
 // Rutas
-// app.use('/api/users', userRouter);
-// app.use('/api/cards', cardRouter);
+app.use('/api/reviews', reviewRouter);
+app.use('/api/categories', categoryRouter);
+// app.use('/api/comments', commentRouter);
