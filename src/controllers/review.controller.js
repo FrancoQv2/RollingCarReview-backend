@@ -67,7 +67,7 @@ reviewCtrl.getReviews = async (req,res) => {
         }
     })
     .populate({path:'category',select:'name'})
-    .populate({path:'comments',select:'username body createdAt'});
+    .populate({path:'comments',select:'username content createdAt'});
 }
 
 reviewCtrl.getReview = async (req,res) => {
@@ -88,7 +88,7 @@ reviewCtrl.getReview = async (req,res) => {
         }
     })
     .populate({path:'category',select:'name'})
-    .populate({path:'comments',select:'username body createdAt'});
+    .populate({path:'comments',select:'username content createdAt'});
 }
 
 reviewCtrl.updateReview = (req,res) =>{

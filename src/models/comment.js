@@ -6,7 +6,7 @@ const CommentSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    body:{
+    content:{
         type: String,
         required: true,
         trim: true

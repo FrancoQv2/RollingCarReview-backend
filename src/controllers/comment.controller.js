@@ -21,10 +21,10 @@ commentCtrl.createComment = async (req,res) =>{
         review.comments.push(comment);
         await review.save();
 
-        res.status(200).json({message: "Comentario creado correctamente!"});
+        res.status(201).json({msg: "Comentario creado correctamente!"});
     }
     catch(error){
-        res.status(400).json({message: "Hubo un error"});
+        res.status(400).json({msg: "Hubo un error"});
     }
 }
 

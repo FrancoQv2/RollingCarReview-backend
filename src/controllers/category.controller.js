@@ -13,19 +13,20 @@ categoryCtrl.createCategory = async (req,res) => {
     try{
         let newCategory = await Category.findOne({name});
         if(newCategory){ 
-            return res.status(400).json({msg:'Esta categoría ya existe'});
+            return res.status(403).json({msg: "Esta categoría ya existe"});
         }
         newCategory = new Category(req.body);
+        console.log(req.body);
         console.log(newCategory);
 
         await newCategory.save();
         res.status(201).json({
-            msg:'Categoría creada correctamente'
+            msg: "Categoría creada correctamente"
         });
     }catch(error){
-        console.log(error);
+        // console.log(error);
         res.status(400).json({
-            msg:'Hubo un error al crear la categoría'
+            msg: "Hubo un error al crear la categoría"
         });
     }
 }
@@ -39,6 +40,7 @@ categoryCtrl.getCategories = async (req,res) => {
                     let category = {
                         id:            eachCategory.id,
                         name:          eachCategory.name,
+                        reviews:       eachCategory.reviews,
                         isDeleted:     eachCategory.isDeleted
                     }
                     if (!category.isDeleted) {
@@ -56,7 +58,7 @@ categoryCtrl.getCategories = async (req,res) => {
         else{
             console.log(err);
         }
-    });
+    }).populate({path:'reviews',select:'title thumbnail'});
 }
 
 categoryCtrl.getCategory = (req,res) => {
