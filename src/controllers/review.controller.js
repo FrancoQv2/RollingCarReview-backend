@@ -42,7 +42,7 @@ reviewCtrl.getReviews = async (req,res) => {
                 const arrayReviews = [];
                 reviews.forEach(eachReview => {
                     let review = {
-                        id:             eachReview.id,
+                        _id:            eachReview.id,
                         title:          eachReview.title,
                         url:            eachReview.url,
                         thumbnail:      eachReview.thumbnail,
