@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const URI = process.env.DB_MONGO;
-console.log(URI);
 
 const OPTIONS = {
     useNewUrlParser: true,
