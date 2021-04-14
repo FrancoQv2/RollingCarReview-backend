@@ -30,8 +30,10 @@ commentCtrl.createComment = async (req,res) =>{
 
 commentCtrl.deleteComment = (req,res) => {
     const id = req.params.id;
+    console.log(req.body);
     req.body = {isDeleted: true};
-    Category.findByIdAndUpdate(id,req.body,{useFindAndModify: false})
+    console.log(req.body);
+    Comment.findByIdAndUpdate(id,req.body,{useFindAndModify: false})
         .then(data => {
             if (!data) {
                 res.status(404).send({

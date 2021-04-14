@@ -40,7 +40,4 @@ router.route('/:id')
     .put(updateReview)
     .delete(deleteReview);
 
-router.route('/comments/:id')
-    .delete(deleteComment)
-
 module.exports = router;
