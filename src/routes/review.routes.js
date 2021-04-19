@@ -37,7 +37,7 @@ router.route('/')
 router.route('/:id')
     .post(checksCreateComment,createComment)
     .get(getReview)
-    .put(updateReview)
-    .delete(deleteReview);
+    // .put(updateReview)
+    .put(deleteReview);
 
 module.exports = router;

@@ -22,7 +22,7 @@ router.route('/')
 
 router.route('/:id')
     .get(getCategory)
-    .put(updateCategory)
-    .delete(deleteCategory);
+    // .put(updateCategory)
+    .put(deleteCategory);
 
 module.exports = router;
