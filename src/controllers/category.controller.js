@@ -58,7 +58,7 @@ categoryCtrl.getCategories = async (req,res) => {
         else{
             console.log(err);
         }
-    }).populate({path:'reviews',select:'title thumbnail'});
+    }).populate({path:'reviews', select:'title thumbnail isDeleted', match:{isDeleted: false}});
 }
 
 categoryCtrl.getCategory = (req,res) => {
