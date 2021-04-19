@@ -28,6 +28,38 @@ commentCtrl.createComment = async (req,res) =>{
     }
 }
 
+commentCtrl.getComments = async (req,res) => {
+    await Comment.find({},function(err,comments){
+        if(!err){
+            if(comments.length != 0) {
+                const arrayComments = [];
+                comments.forEach(eachComment => {
+                    let comment = {
+                        _id:            eachComment.id,
+                        username:       eachComment.username,
+                        content:        eachComment.content,
+                        onReview:       eachComment.onReview,
+                        isDeleted:      eachComment.isDeleted,
+                        createdAt:      eachComment.createdAt
+                    }
+                    if (!comment.isDeleted) {
+                        arrayComments.push(comment);
+                    }
+                });
+                res.status(200).send(arrayComments);
+            }
+            else {
+                res.status(400).json({
+                    msg:"No existen comentarios"
+                });
+            }
+        }
+        else{
+            console.log(err);
+        }
+    }).populate({path:'onReview', select:'title', match:{isDeleted: false}});
+}
+
 commentCtrl.deleteComment = (req,res) => {
     const id = req.params.id;
     console.log(req.body);
