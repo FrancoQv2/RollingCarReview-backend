@@ -62,9 +62,7 @@ commentCtrl.getComments = async (req,res) => {
 
 commentCtrl.deleteComment = (req,res) => {
     const id = req.params.id;
-    console.log(req.body);
     req.body = {isDeleted: true};
-    console.log(req.body);
     Comment.findByIdAndUpdate(id,req.body,{useFindAndModify: false})
         .then(data => {
             if (!data) {
